@@ -109,6 +109,8 @@ class Profile extends React.Component {
                                 Back
                             </Button>
                             <Button
+                                disabled={localStorage.getItem("token") !== this.state.user.token}
+
                                 width="50%"
                                 onClick={() => {
                                     this.editUser(this.state.user.id);

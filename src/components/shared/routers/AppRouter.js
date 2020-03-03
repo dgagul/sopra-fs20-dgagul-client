@@ -60,7 +60,7 @@ class AppRouter extends React.Component {
             />
             <Route
               exact
-              path={"edit/:id"}
+              path={"/edit/:id"}
               render={() => (
                 <EditGuard>
                   <Edit />
