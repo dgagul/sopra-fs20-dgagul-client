@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import { BaseContainer } from '../../helpers/layout';
 import { api, handleError } from '../../helpers/api';
-import User from '../shared/models/User';
 import { withRouter } from 'react-router-dom';
 import { Button } from '../../views/design/Button';
 
@@ -65,7 +64,7 @@ const ButtonContainer = styled.div`
  * https://reactjs.org/docs/react-component.html
  * @Class
  */
-class Login extends React.Component {
+class Register extends React.Component {
   /**
    * If you don’t initialize the state and you don’t bind methods, you don’t need to implement a constructor for your React component.
    * The constructor for a React component is called before it is mounted (rendered).
@@ -80,40 +79,39 @@ class Login extends React.Component {
     };
   }
   /**
-   * HTTP GET request is sent to the backend.
-   * If the request is successful, the user is returned to the front-end
-   * and its token is stored in the localStorage.
+   * HTTP POST request is sent to the backend.
+   * If the request is successful, a new user is returned to the front-end
    */
-  async login() {
+  async register() {
     try {
       const requestBody = JSON.stringify({
         username: this.state.username,
         password: this.state.password,
       });
 
-      const response = await api.put('/login', requestBody);
-      
+      const response = await api.post('/users', requestBody);
+
       // some data to see what is available
       console.log('request to:', response.request.responseURL);
       console.log('status code:', response.status);
       console.log('status text:', response.statusText);
       console.log('requested data:', response.data);
-
-      console.log(response)
-                                                                      // Todo: IF LOGIN NOT SUCCESSFULL -> REDIRECT TO REGISTER ROUTE
       
-      // Get the returned user and update a new object.
-      const user = new User(response.data);
+      alert("successfully registered!")
 
-      // Store the token into the local storage.
-      localStorage.setItem('token', user.token);
+      // Register successfully worked --> navigate to the route /login in the LoginRouter
+      this.props.history.push(`/login`);
 
-      // Login successfully worked --> navigate to the route /game in the GameRouter
-      this.props.history.push(`/game`);
     } catch (error) {
       alert(`Something went wrong during the login: \n${handleError(error)}`);
     }
   }
+
+
+
+
+
+
 
   /**
    *  Every time the user enters something in the input field, the state gets updated.
@@ -139,7 +137,7 @@ class Login extends React.Component {
     return (
       <BaseContainer>
         <FormContainer>
-          <h1 style={{color: '#fff'}} >Login</h1>
+            <h1 style={{color: '#fff'}} >Register</h1>
           <Form>
             <Label>Username</Label>
             <InputField
@@ -160,20 +158,20 @@ class Login extends React.Component {
                 disabled={!this.state.password || !this.state.username}
                 width="70%"
                 onClick={() => {
-                  this.login();
+                  this.register();
                 }}
               >
-                Login
+                Register
               </Button>
             </ButtonContainer>
             <ButtonContainer>
               <Button
                   width="70%"
                   onClick={() => {
-                    this.props.history.push(`/register`);
+                    this.props.history.push(`/login`);
                   }}
               >
-                Register here!
+                Already registred? Go to Login!
               </Button>
             </ButtonContainer>
           </Form>
@@ -187,4 +185,4 @@ class Login extends React.Component {
  * You can get access to the history object's properties via the withRouter.
  * withRouter will pass updated match, location, and history props to the wrapped component whenever it renders.
  */
-export default withRouter(Login);
+export default withRouter(Register);

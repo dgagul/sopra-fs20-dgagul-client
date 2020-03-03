@@ -35,10 +35,10 @@ const Id = styled.div`
  * https://reactjs.org/docs/components-and-props.html
  * @FunctionalComponent
  */
-const Player = ({ user }) => {
+const Player = ({ showUser, user }) => {
   return (
-    <Container>
-      <Name>{user.name}</Name> <UserName>{user.username}</UserName>
+    <Container onClick={() => showUser}>
+      <Name>{user.username}</Name> <UserName>{user.password}</UserName>
       <Id>Id: {user.id}</Id>
     </Container>
   );
