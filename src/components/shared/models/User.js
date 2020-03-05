@@ -7,7 +7,7 @@ class User {
     this.username = null;
     this.password = null;
     this.creationDate = null;
-    this.birth = null;
+    this.birthday = null;
     this.token = null;
     this.status = null;
     Object.assign(this, data);

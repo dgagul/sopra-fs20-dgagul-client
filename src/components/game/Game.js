@@ -58,7 +58,6 @@ class Game extends React.Component {
       console.log(this.props)
       console.log(this.props.history)
       
-      // TODO - fix render after pushing url
       this.props.history.push('/login');
     } catch (error) {
       alert(`Something went wrong during the logout: \n${handleError(error)}`);
@@ -66,7 +65,6 @@ class Game extends React.Component {
   }
 
   showUser = (id) => {
-    // TODO - fix render after pushing url
     this.props.history.push(`/users/${id}`)
   }
 

@@ -86,7 +86,7 @@ class Edit extends React.Component {
             const requestBody = JSON.stringify({
                 id: this.state.user.id,
                 username: this.state.username,
-                birth: this.state.birth
+                birthday: this.state.birthday
             });
 
             //const test = "users/1"
@@ -149,12 +149,12 @@ class Edit extends React.Component {
                                 this.handleInputChange("username", e.target.value);
                             }}
                         />
-                        <Label>Date of Birth</Label>
+                        <Label>Birthday</Label>
                         <InputField
                             type={`date`}
-                            placeholder={this.state.user.birth}
+                            placeholder={this.state.user.birthday}
                             onChange={e => {
-                                this.handleInputChange("birth", e.target.value);
+                                this.handleInputChange("birthday", e.target.value);
                             }}
                         />
                     </Form>

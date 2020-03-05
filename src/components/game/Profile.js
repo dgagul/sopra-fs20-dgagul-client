@@ -89,7 +89,7 @@ class Profile extends React.Component {
                         </Boxes>
                         <p></p>
                         <Boxes>
-                            {"Birthday:"}   {this.state.user.birth}
+                            {"Birthday:"}   {this.state.user.birthday}
                         </Boxes>
                         <p></p>
                         <Boxes>
