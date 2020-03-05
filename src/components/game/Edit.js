@@ -140,7 +140,7 @@ class Edit extends React.Component {
     render() {
         return (
             <BaseContainer>
-                <FormContainer>Edit User Information {this.state.username}
+                <FormContainer>Edit User Information
                     <Form>
                         <Label>Username</Label>
                         <InputField

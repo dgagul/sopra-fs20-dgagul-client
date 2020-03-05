@@ -44,6 +44,7 @@ class AppRouter extends React.Component {
               )}
             />
             <Route
+              exact
               path="/register"
               render={() => (
                 <Register />
@@ -66,7 +67,6 @@ class AppRouter extends React.Component {
                   <Edit />
                 </EditGuard>
               )}
-
             />
             <Route path="/" exact render={() => <Redirect to={"/register"} />} />
           </div>

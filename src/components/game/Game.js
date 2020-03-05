@@ -6,6 +6,7 @@ import Player from '../../views/Player';
 import { Spinner } from '../../views/design/Spinner';
 import { Button } from '../../views/design/Button';
 import { withRouter } from 'react-router-dom';
+//import { Link } from "react-router-dom";
 
 const Container = styled(BaseContainer)`
   color: white;
@@ -53,13 +54,19 @@ class Game extends React.Component {
 
       // Logout successfully worked --> navigate to the route /login in the AppRouter and remove token
       localStorage.removeItem('token');
+      
+      console.log(this.props)
+      console.log(this.props.history)
+      
+      // TODO - fix render after pushing url
       this.props.history.push('/login');
     } catch (error) {
-      alert(`Something went wrong during the login: \n${handleError(error)}`);
+      alert(`Something went wrong during the logout: \n${handleError(error)}`);
     }
   }
 
   showUser = (id) => {
+    // TODO - fix render after pushing url
     this.props.history.push(`/users/${id}`)
   }
 
@@ -90,14 +97,11 @@ class Game extends React.Component {
             <Users>
               {this.state.users.map(user => {
                 return (
-                  <PlayerContainer 
-                    onClick={() => 
-                    this.showUser(user.id)} 
-                    key={user.id}>
-                    <Player
-                        user={user}
-                    />
+                  //<NavLink user={user} to={`/users/${user.id}`}>
+                  <PlayerContainer onClick={() => this.showUser(user.id) }>
+                    <Player user={user} />
                   </PlayerContainer>
+                  //</NavLink>
                 );
               })}
             </Users>
