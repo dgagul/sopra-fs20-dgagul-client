@@ -99,9 +99,6 @@ class Login extends React.Component {
       console.log('status text:', response.statusText);
       console.log('requested data:', response.data);
 
-      console.log(response)
-                                                                      // Todo: IF LOGIN NOT SUCCESSFULL -> REDIRECT TO REGISTER ROUTE
-      
       // Get the returned user and update a new object.
       const user = new User(response.data);
 

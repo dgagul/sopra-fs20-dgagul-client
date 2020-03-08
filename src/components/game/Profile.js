@@ -45,12 +45,6 @@ class Profile extends React.Component {
 
             // Get the returned users and update the state.
             this.setState({ user: response.data });
-
-            // This is just some data for you to see what is available.
-            console.log('request to:', response.request.responseURL);
-            console.log('status code:', response.status);
-            console.log('status text:', response.statusText);
-            console.log('requested data:', response.data);
     
         }  catch (error) {
             alert(`Something went wrong while fetching the users: \n${handleError(error)}`);

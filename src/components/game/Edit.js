@@ -120,17 +120,10 @@ class Edit extends React.Component {
 
             const response = await api.get(`users/${numb}`);
 
-            console.log(response.data)
-
             await new Promise(resolve => setTimeout(resolve, 1000));
             
             this.setState({ user: response.data });
-            
-            console.log('request to:', response.request.responseURL);
-            console.log('status code:', response.status);
-            console.log('status text:', response.statusText);
-            console.log('requested data:', response.data);
-    
+
         } catch (error) {
             alert(`Something went wrong while fetching the users: \n${handleError(error)}`);
         }
